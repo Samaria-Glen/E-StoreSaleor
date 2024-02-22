@@ -485,6 +485,8 @@ def test_checkout_delivery_method_update_with_not_all_required_shipping_address_
             delivery_method,
             delivery_method.channel_listings.get(),
         )
+    elif attribute_name == "collection_point" and is_valid_delivery_method:
+        checkout_info.shipping_address = shipping_method_data.address
     query = MUTATION_UPDATE_DELIVERY_METHOD
     mock_clean_delivery.return_value = is_valid_delivery_method
 
@@ -560,6 +562,8 @@ def test_checkout_delivery_method_update_with_not_valid_address_data(
             delivery_method,
             delivery_method.channel_listings.get(),
         )
+    elif attribute_name == "collection_point" and is_valid_delivery_method:
+        checkout_info.shipping_address = shipping_method_data.address
     query = MUTATION_UPDATE_DELIVERY_METHOD
     mock_clean_delivery.return_value = is_valid_delivery_method
 
